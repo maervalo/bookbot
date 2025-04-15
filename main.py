@@ -1,5 +1,6 @@
 from stats import get_num_words
 from stats import get_char_count
+from stats import sort_chars
 
 def get_book_text(filepath):
     with open(filepath) as f:
@@ -15,6 +16,11 @@ def main():
     print(f"Found {number_of_words} total words")
     print("--------- Character Count -------")
     character_count = get_char_count(entire_content)
-    print(character_count)
-# Expected to see keys like {'h': 1, 'e': 1, 'l': 3, ',', 1, ' ': 1, 'w': 1, 'o': 2, 'r': 1, 'd': 1, '!': 1}
+    #print(character_count)
+    sorted_chars = sort_chars(character_count)
+    for char_dict in sorted_chars:
+        char = char_dict["char"]
+        if char.isalpha():
+            count = char_dict["count"]
+            print(f"{char}: {count}")
 main()
